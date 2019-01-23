@@ -22,16 +22,28 @@ class ViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        changeDiceImages()
     }
 
     @IBAction func rollButtonPressed(_ sender: UIButton)
+    {
+        changeDiceImages()
+    }
+    
+    func changeDiceImages()
     {
         randomDiceIndex1 = Int(arc4random_uniform(6))
         randomDiceIndex2 = Int(arc4random_uniform(6))
         
         diceImageView1.image = UIImage(named: imageDiceNames[randomDiceIndex2])
         diceImageView2.image = UIImage(named: imageDiceNames[randomDiceIndex1])
+        
+    }
+    
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?)
+    {
+        changeDiceImages()
     }
     
 }
